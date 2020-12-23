@@ -5,6 +5,7 @@ const words = [
   "bicicle",
   "titanic",
   "football",
+  "Thailand"
 ];
 const clues = [
   "Capital of the Netherlands",
@@ -13,6 +14,7 @@ const clues = [
   "It only have two wheels, pedals and a handlebar",
   "Luxury British steamship that sank after striking an iceberg",
   "In the US they call it soccer, but in Europe we call it...",
+  "The Land of Smiles."
 ];
 
 // choose word from array;
@@ -34,7 +36,7 @@ const button = document.querySelector("#check-input");
 const playAgain = document.querySelector("#play-again");
 clue.innerHTML = `${chosenClue}`;
 
-// Criar _ de acordo com o tamanho da palavra
+// create underscores according to word's lenght
 let underscore = [];
 function createUnderscores() {
   for (let i = 0; i < chosenWord.length; i++) {
@@ -43,43 +45,44 @@ function createUnderscores() {
   return underscore.join(" ");
 }
 cWord.innerHTML = `${createUnderscores()}`;
-//preencher os _ com as letras que o user coloca
+// fill _ with letters
 let rightWord = [];
 
-// obter o input do user e jogar
+//  get user input and play
 let gLeft = ["❤️", "❤️", "❤️", "❤️", "❤️", "❤️"];
 lives.innerHTML = `${gLeft.join("")}`;
 
 button.addEventListener("click", () => {
+  
   let input = userInput.value.trim().toLowerCase();
-  if(input.charCodeAt(0))
+  if (
+    
+    (input.charCodeAt(0)<97 || input.charCodeAt(0)>122)
+  ) {
+    lives.innerHTML = `Please insert a letter!`;
+    return;
+  }
+  
   let indices = [];
   for (let i = 0; i < chosenWord.length; i++) {
     if (chosenWord[i] === input) {
       indices.push(i);
     }
   }
-  console.log(indices);
   if (chosenWord.includes(input)) {
-    // underscore[chosenWord.indexOf(input)] = input;
-    // underscore[chosenWord.lastIndexOf(input)] = input;
-
+  
     for (let i = 0; i < indices.length; i++) {
       underscore[indices[i]] = input;
     }
     cWord.innerHTML = underscore.join(" ");
     if (underscore.join("") == chosenWord) {
-      lives.innerHTML = `YOU WON! 🏆`;
+      lives.innerHTML = `You guessed the word! 🏆`;
     }
   } else {
     wrongLetters.innerHTML += `${input} `;
     gLeft.pop();
     lives.innerHTML = `${gLeft.join("")}`;
-    let wrong = [];
-    wrong.push(input);
-    if(wrong(includes==input)){
-      validate.innerHTML=`You already choose ${input}. Choose another letter.`;
-    }
+    
   }
   if (gLeft.length == 0) {
     lives.innerHTML = `GAME OVER. <br> The word was ${chosenWord}. Try again`;
