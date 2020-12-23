@@ -1,0 +1,15 @@
+body{
+    font-family: 'Courier New', Courier, monospace;
+}
+body > div{
+    width:fit-content;
+    height: fit-content;
+    
+    color:black;
+    border-radius: 20px;
+    box-shadow: 2px 2px 5px lightgray;
+    background: url("https://res.cloudinary.com/dshmwg7vw/image/upload/v1550486966/OCCNFD0.jpg");
+    background-size: contain;
+    background-repeat: repeat;
+
+}
