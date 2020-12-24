@@ -5,7 +5,7 @@ const words = [
   "bicicle",
   "titanic",
   "football",
-  "Thailand",
+  "thailand",
 ];
 const clues = [
   "Capital of the Netherlands",
@@ -21,13 +21,13 @@ const clues = [
 
 const random = Math.floor(Math.random() * words.length);
 console.log(random)
-const chosenWord = words[random];
+const word = words[random];
 const chosenClue = clues[random];
 
-//
+// document elements
 
-const cWord = document.querySelector("#chosen-word");
-const wrongLetters = document.querySelector("#wrong-guess");
+const chosenWord = document.querySelector("#chosen-word");
+const wrongLetters = document.querySelector("#wrong-letters");
 const clue = document.querySelector("#clue");
 const result = document.querySelector("#result");
 const lives = document.querySelector("#lives-left");
@@ -35,52 +35,61 @@ const validate = document.querySelector("#validate");
 const userInput = document.querySelector("#user-input");
 const button = document.querySelector("#check-input");
 const playAgain = document.querySelector("#play-again");
+
 clue.innerHTML = `${chosenClue}`;
 
 // create underscores according to word's lenght
 let underscore = [];
 function createUnderscores() {
-  for (let i = 0; i < chosenWord.length; i++) {
+  for (let i = 0; i < word.length; i++) {
     underscore.push("_");
   }
   return underscore.join(" ");
 }
-cWord.innerHTML = `${createUnderscores()}`;
-//  get user input and play
-let gLeft = ["❤️", "❤️", "❤️", "❤️", "❤️", "❤️"];
-lives.innerHTML = `${gLeft.join("")}`;
+chosenWord.innerHTML = `${createUnderscores()}`;
+
+//  display initial lives
+let livesLeft = ["❤️", "❤️", "❤️", "❤️", "❤️", "❤️"];
+lives.innerHTML = `${livesLeft.join("")}`;
 
 button.addEventListener("click", () => {
   let input = userInput.value.trim().toLowerCase();
+  // checks if user input is a letter
   if (input.charCodeAt(0) < 97 || input.charCodeAt(0) > 122) {
     lives.innerHTML = `Please insert a letter!`;
     return;
   }
-
+ // create an array to store the positions where the input exists in the chosen word 
   let indices = [];
-  for (let i = 0; i < chosenWord.length; i++) {
-    if (chosenWord[i] === input) {
+  for (let i = 0; i < word.length; i++) {
+    if (word[i] === input) {
       indices.push(i);
     }
   }
-  if (chosenWord.includes(input)) {
+  if (word.includes(input)) {
     for (let i = 0; i < indices.length; i++) {
+      // replaces the underscore with the user input
       underscore[indices[i]] = input;
     }
-    cWord.innerHTML = underscore.join(" ");
-    if (underscore.join("") == chosenWord) {
+    chosenWord.innerHTML = underscore.join(" ");
+
+    if (underscore.join("") == word) {
+      // checks if the user guessed the word
       lives.innerHTML = `You guessed the word! 🏆`;
     }
   } else {
     wrongLetters.innerHTML += `${input} `;
-    gLeft.pop();
-    lives.innerHTML = `${gLeft.join("")}`;
+    // removes lives from the lives array
+    livesLeft.pop();
+    lives.innerHTML = `${livesLeft.join("")}`;
   }
-  if (gLeft.length == 0) {
-    lives.innerHTML = `GAME OVER. <br> The word was ${chosenWord}. Try again`;
+  if (livesLeft.length == 0) {
+// if there are no lives left, game is over
+    lives.innerHTML = `GAME OVER 🤯. <br> The word was ${word}. Try again!`;
   }
 });
 
+// refresh page
 playAgain.addEventListener("click", () => {
   location.reload();
 });
