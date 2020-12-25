@@ -55,7 +55,7 @@ lives.innerHTML = `${livesLeft.join("")}`;
 button.addEventListener("click", () => {
   let input = userInput.value.trim().toLowerCase();
   // checks if user input is a letter
-  if (input.charCodeAt(0) < 97 || input.charCodeAt(0) > 122) {
+  if (input.charCodeAt(0) < 97 || input.charCodeAt(0) > 122 || input.length<1 || input.length>1) {
     lives.innerHTML = `Please insert a letter!`;
     return;
   }

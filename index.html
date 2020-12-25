@@ -10,27 +10,45 @@
       integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
       crossorigin="anonymous"
     />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
+      crossorigin="anonymous"
+    />
     <script src="script.js" defer></script>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css" />
   </head>
-  <body style="text-align:center;">
-     
-      <div class="my-4">
-        <h1 class="font-weight-bold py-4 my-4">GUESS THE WORD</h1>
-        <h1 id="chosen-word" class="py-3"></h1>
-        <div id="clue"></div>
-        <div >Wrong Letters: <span id="wrong-letters"></span>
+  <body style="text-align: center">
+    <div class="my-4">
+      <h1 class="font-weight-bold py-4 my-4">GUESS THE WORD</h1>
+      <div class="row">
+        <div class="col-9">
+          <h1 id="chosen-word" class="py-3"></h1>
+          <div id="clue"></div>
         </div>
-        <div id="result"></div>
-        <input type="text" id="user-input">
-        <input type="button" value="check" id="check-input">
-        <p id="validate"></p>
-        <h3 class="py-2"><span id="lives-left"></span></h3>
-        <button class="btn btn-light my-3" id="play-again">Play again</button>
-        
+        <div class="col-3">
+          <div>
+            Wrong Letters: <br />
+            <span id="wrong-letters"></span>
+          </div>
+        </div>
       </div>
+      <div id="result"></div>
+      <input type="text" id="user-input" />
+      <input type="button" value="check" id="check-input" />
+      <p id="validate"></p>
+      <h3 class="py-2"><span id="lives-left"></span></h3>
+      <button class="btn btn-light my-3" id="play-again">Play again</button>
+    </div>
 
-        <small><a href="https://github.com/ineserdoura/guess-the-word-game" target="_blank">Open-source code</a> by 👩🏽‍💻 Inês Serdoura</small>
-      
-    </body>
+    <small
+      ><a
+        href="https://github.com/ineserdoura/guess-the-word-game"
+        target="_blank"
+        >Open-source code</a
+      >
+      by 👩🏽‍💻 Inês Serdoura</small
+    >
+  </body>
+</html>
