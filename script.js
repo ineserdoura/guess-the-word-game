@@ -20,7 +20,7 @@ const clues = [
 // choose word from array;
 
 const random = Math.floor(Math.random() * words.length);
-console.log(random)
+console.log(random);
 const word = words[random];
 const chosenClue = clues[random];
 
@@ -59,7 +59,7 @@ button.addEventListener("click", () => {
     lives.innerHTML = `Please insert a letter!`;
     return;
   }
- // create an array to store the positions where the input exists in the chosen word 
+  // create an array to store the positions where the input exists in the chosen word
   let indices = [];
   for (let i = 0; i < word.length; i++) {
     if (word[i] === input) {
@@ -72,10 +72,14 @@ button.addEventListener("click", () => {
       underscore[indices[i]] = input;
     }
     chosenWord.innerHTML = underscore.join(" ");
+    userInput.value="";
 
     if (underscore.join("") == word) {
       // checks if the user guessed the word
       lives.innerHTML = `You guessed the word! 🏆`;
+      setTimeout(() => {
+        location.reload();
+      }, 5000);
     }
   } else {
     wrongLetters.innerHTML += `${input} `;
@@ -84,8 +88,11 @@ button.addEventListener("click", () => {
     lives.innerHTML = `${livesLeft.join("")}`;
   }
   if (livesLeft.length == 0) {
-// if there are no lives left, game is over
+    // if there are no lives left, game is over
     lives.innerHTML = `GAME OVER 🤯. <br> The word was ${word}. Try again!`;
+    setTimeout(() => {
+      location.reload();
+    }, 5000);
   }
 });
 
