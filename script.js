@@ -20,7 +20,6 @@ const clues = [
 // choose word from array;
 
 const random = Math.floor(Math.random() * words.length);
-console.log(random);
 const word = words[random];
 const chosenClue = clues[random];
 
